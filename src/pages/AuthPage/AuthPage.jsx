@@ -27,15 +27,13 @@ const AuthPage = () => {
     onSubmit: async (values) => {
       try {
         if (isSignup) {
-          // تسجيل حساب جديد
           await createUserWithEmailAndPassword(auth, values.email, values.password);
           console.log("User registered successfully!");
-          navigate("/home"); // الانتقال إلى صفحة أخرى بعد التسجيل الناجح
+          navigate("/home"); 
         } else {
-          // تسجيل الدخول
           await signInWithEmailAndPassword(auth, values.email, values.password);
           console.log("User logged in successfully!");
-          navigate("/home"); // الانتقال إلى صفحة أخرى بعد تسجيل الدخول
+          navigate("/home");
         }
       } catch (err) {
         setError(err.message);
@@ -49,7 +47,6 @@ const AuthPage = () => {
         <h2 className="text-2xl font-bold text-center mb-6">{isSignup ? "Signup" : "Login"}</h2>
 
         <form onSubmit={formik.handleSubmit}>
-          {/* Email */}
           <div className="mb-4">
             <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email:</label>
             <input
@@ -66,7 +63,6 @@ const AuthPage = () => {
             )}
           </div>
 
-          {/* Password */}
           <div className="mb-4">
             <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password:</label>
             <input
@@ -83,7 +79,6 @@ const AuthPage = () => {
             )}
           </div>
 
-          {/* Submit Button */}
           <div className="mb-4">
             <button
               type="submit"
@@ -94,7 +89,6 @@ const AuthPage = () => {
           </div>
         </form>
 
-        {/* Toggle Login/Signup */}
         <p className="text-center text-sm">
           {isSignup ? "Already have an account?" : "Don't have an account?"}
         </p>
